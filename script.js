@@ -1,8 +1,7 @@
 const myResultsReadyCallback = function (name, q, promos, results, resultsDiv) {
   // sorter ito. Need daw to
   results.sort((a, b) => {
-    return (b.richSnippet?.videoobject?.interactioncount || 0) -
-    (a.richSnippet?.videoobject?.interactioncount || 0);
+    return (b.richSnippet?.videoobject?.interactioncount || 0) - (a.richSnippet?.videoobject?.interactioncount || 0);
   });
 
   // eto na yung taga kuha ng info. hehe
@@ -11,22 +10,40 @@ const myResultsReadyCallback = function (name, q, promos, results, resultsDiv) {
 
     //taga kuha nung pictyur
     const img = document.createElement("img");
-    img.src = result.richSnippet.videoobject.thumbnailurl;
-    img.alt = result.richSnippet.videoobject.name;
+    img.src = result.richSnippet.videoobject.thumbnailurl || 0;
+    img.alt = result.richSnippet.videoobject.name || 0;
     img.classList.add("thumbnail-image");
 
     const openVideoPage = () => {
       const videoContainer = document.getElementById("video-container");
+      videoContainer.style.visibility = "visible";
       videoContainer.innerHTML = "";
 
       const videoFrame = document.createElement("iframe");
-      videoFrame.setAttribute("src", result.richSnippet.videoobject.embedurl);
-      videoFrame.setAttribute("width", "640");
+      videoFrame.setAttribute("src", result.richSnippet.videoobject.embedurl || 0);
+      videoFrame.setAttribute("width", "600");
       videoFrame.setAttribute("height", "360");
-      videoFrame.style.display = "block";
-      videoFrame.style.margin = "auto";
+
+      const visitButton = document.createElement("button");
+      visitButton.innerText = "Visit";
+      visitButton.addEventListener("click", () => {
+        window.open(result["url"], "_blank");
+      });
+
+      const closeButton = document.createElement("button");
+      closeButton.innerText = "Close";
+      closeButton.classList.add("close-button");
+      closeButton.addEventListener("click", () => {
+        videoContainer.style.visibility = "hidden";
+      });
+
+      const buttonContainer = document.createElement("div");
+      buttonContainer.appendChild(visitButton);
+      buttonContainer.appendChild(closeButton);
+      buttonContainer.classList.add("button-container");
 
       videoContainer.appendChild(videoFrame);
+      videoContainer.appendChild(buttonContainer);
     };
 
     img.addEventListener("click", openVideoPage);
@@ -42,17 +59,15 @@ const myResultsReadyCallback = function (name, q, promos, results, resultsDiv) {
     titleText.classList.add("title-container");
 
     const ytPerson = document.createElement("span");
-    ytPerson.innerHTML = result.richSnippet.person.name;
-    
+    ytPerson.innerHTML = result.richSnippet.person.name || 0;
+
     const ytUrl = document.createElement("span");
     ytUrl.innerHTML = result.visibleUrl;
 
-    const intCountValue = result.richSnippet.videoobject.interactioncount;
+    const intCountValue = result.richSnippet.videoobject.interactioncount || 0;
 
     const interactioncount = document.createElement("section");
-    interactioncount.innerHTML = formatInteractionCount(intCountValue) + "views";
-    interactioncount.classList.add("count-container");
-
+    interactioncount.innerHTML = formatInteractionCount(intCountValue) + " views";
     return [img, titleText, ytUrl, ytPerson, interactioncount];
   };
 
@@ -70,32 +85,29 @@ const myResultsReadyCallback = function (name, q, promos, results, resultsDiv) {
       const tableInfo = document.createElement("div");
       tableInfo.classList.add("table-container");
       tableInfo.classList.add("info-container");
-      
+
       const titleContainer = document.createElement("div");
       titleContainer.appendChild(titleText);
-      
+
       const personContainer = document.createElement("div");
       personContainer.appendChild(ytPerson);
-      
+
       const interactionCountContainer = document.createElement("div");
       interactionCountContainer.appendChild(ytUrl);
       interactionCountContainer.appendChild(interactioncount);
       interactionCountContainer.classList.add("count-container");
-      
+
       tableInfo.appendChild(titleContainer);
       tableInfo.appendChild(personContainer);
       tableInfo.appendChild(interactionCountContainer);
-      
+
       const tableFooter = document.createElement("div");
-      tableFooter.classList.add('table-footer');
-      
+      tableFooter.classList.add("table-footer");
+
       resultContainer.appendChild(tableInfo);
       resultContainer.appendChild(tableFooter);
-      
 
       cell.appendChild(resultContainer);
-
-      // resultContainer.style.border = '1px solid black';
     }
     resultsDiv.appendChild(table);
   }

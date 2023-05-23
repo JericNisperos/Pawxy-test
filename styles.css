@@ -10,6 +10,28 @@ body {
   margin-right: auto;
 }
 
+#video-container {
+  max-width: 600px;
+  position: fixed;
+  min-height: 100vh;
+  background-color: rgba(0, 0, 0, 0.8);
+  align-items: center;
+  border: none !important;
+  margin: 0px;
+
+  display: flex; /* Add this line to make the container flex */
+  flex-direction: column; /* Display its children vertically */
+  justify-content: center; /* Align items vertically in the center */
+  /* 
+  
+  width: 100%;
+  height: 100%;
+  
+  
+  justify-content: center;
+   */
+  z-index: 9999;
+}
 .gsc-tabsArea {
   display: none !important;
 }
@@ -28,10 +50,14 @@ body {
 
 .thumbnail-image {
   border-radius: 10px;
-  margin-right: 0.5rem;
+  /* margin-right: 0.5rem; */
   cursor: pointer;
   max-width: 250px;
   height: auto;
+  /* margin-top: auto; */
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .title-container {
@@ -40,7 +66,30 @@ body {
   flex: 1;
 }
 
+.button-container {
+  display: flex; /* Display buttons horizontally */
+  justify-content: space-between; /* Center align buttons horizontally */ /* Add some spacing between buttons */
+  width: 90%;
+  margin-top: 30vh;
+  margin-bottom: 2vh;
+}
+
+.button-container button {
+  background-color: #2A8CFF;
+  color: white;
+  font-weight: 100;
+  border-radius: 25px;
+  padding: 12px 24px;
+  font-size: 18px;
+  border: none !important;
+  cursor: pointer;
+}
+
+.close-button {
+  background-color: gray !important;
+}
 .result-container {
+  gap: 24px;
   display: flex;
   padding: 0.5rem;
   border: 3px solid white !important;
@@ -49,7 +98,6 @@ body {
 .table-container {
   display: flex;
   flex-direction: row;
-  /* outline: 1px solid black; */
 }
 
 .result-container:hover {
@@ -60,20 +108,14 @@ body {
 .count-container {
   color: black;
   display: flex;
-  /* margin-top: 25%; */
-  /* margin-left: auto; */
-  /* margin-right: auto; */
-  /* margin-top: auto; */
   justify-content: space-between;
-  /* align-items: right; */
-  /* outline: 1px solid black; */
   width: auto;
+  margin-top: 45px;
+  margin-bottom: 0px;
 }
 
 .info-container {
   display: inline-block;
-  /* flex-wrap: wrap; */
-  /* flex:auto; */
 }
 input.gsc-input {
   font-size: 18px;

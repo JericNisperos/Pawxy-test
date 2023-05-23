@@ -4,14 +4,21 @@ const myResultsReadyCallback = function (name, q, promos, results, resultsDiv) {
     return (b.richSnippet?.videoobject?.interactioncount || 0) - (a.richSnippet?.videoobject?.interactioncount || 0);
   });
 
+  // const prevButton = document.getElementsByClassName('gsc-cursor-container-previous');
+  // console.log(prevButton[0])
+
+  const element = document.querySelector(".gsc-cursor-container-previous");
+  console.log(element);
+  // Loop through each matched element
+
   // eto na yung taga kuha ng info. hehe
   const makeResultParts = (result) => {
-    console.log(result);
+    // console.log(result);
 
     //taga kuha nung pictyur
     const img = document.createElement("img");
-    img.src = result.richSnippet.videoobject.thumbnailurl || 0;
-    img.alt = result.richSnippet.videoobject.name || 0;
+    img.src = result.richSnippet?.videoobject?.thumbnailurl || "https://i.imgur.com/3Fc5RF7.png";
+    img.alt = result.richSnippet?.videoobject?.name || "";
     img.classList.add("thumbnail-image");
 
     const openVideoPage = () => {
@@ -20,7 +27,7 @@ const myResultsReadyCallback = function (name, q, promos, results, resultsDiv) {
       videoContainer.innerHTML = "";
 
       const videoFrame = document.createElement("iframe");
-      videoFrame.setAttribute("src", result.richSnippet.videoobject.embedurl || 0);
+      videoFrame.setAttribute("src", result.richSnippet?.videoobject?.embedurl || "");
       videoFrame.setAttribute("width", "600");
       videoFrame.setAttribute("height", "360");
 
@@ -59,12 +66,12 @@ const myResultsReadyCallback = function (name, q, promos, results, resultsDiv) {
     titleText.classList.add("title-container");
 
     const ytPerson = document.createElement("span");
-    ytPerson.innerHTML = result.richSnippet.person.name || 0;
+    ytPerson.innerHTML = result.richSnippet?.person?.name || "";
 
     const ytUrl = document.createElement("span");
     ytUrl.innerHTML = result.visibleUrl;
 
-    const intCountValue = result.richSnippet.videoobject.interactioncount || 0;
+    const intCountValue = result.richSnippet?.videoobject?.interactioncount || 0;
 
     const interactioncount = document.createElement("section");
     interactioncount.innerHTML = formatInteractionCount(intCountValue) + " views";

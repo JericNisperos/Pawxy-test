@@ -7,8 +7,6 @@ const myResultsReadyCallback = function (name, q, promos, results, resultsDiv) {
   // const prevButton = document.getElementsByClassName('gsc-cursor-container-previous');
   // console.log(prevButton[0])
 
-  const element = document.querySelector(".gsc-cursor-container-previous");
-  console.log(element);
   // Loop through each matched element
 
   // eto na yung taga kuha ng info. hehe
@@ -87,6 +85,14 @@ const myResultsReadyCallback = function (name, q, promos, results, resultsDiv) {
       const resultContainer = document.createElement("div");
       resultContainer.classList.add("result-container");
 
+      //this should add a filter to only show results which has video but 
+      // it no longer contains 10 total. Tho it says maximum of 10 per 
+      // page and not minimum so might also work. Hmmmm
+
+      // if(result.richSnippet.videoobject) {
+  
+      // }
+
       const [img, titleText, ytUrl, ytPerson, interactioncount] = makeResultParts(result);
       resultContainer.appendChild(img);
       const tableInfo = document.createElement("div");
@@ -97,6 +103,7 @@ const myResultsReadyCallback = function (name, q, promos, results, resultsDiv) {
       titleContainer.appendChild(titleText);
 
       const personContainer = document.createElement("div");
+      personContainer.classList.add('person-container');
       personContainer.appendChild(ytPerson);
 
       const interactionCountContainer = document.createElement("div");

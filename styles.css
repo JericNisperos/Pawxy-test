@@ -34,7 +34,7 @@ body {
   background-color: #f7f7f7;
   align-items: center;
   font-weight: bold;
-  padding-left: 10%;
+  padding-left: 2.5rem;
   padding-top: 10px;
   padding-bottom: 10px;
   display: flex;
@@ -83,6 +83,10 @@ body {
 .close-button {
   background-color: gray !important;
 }
+
+.person-container {
+  color: gray;
+}
 .result-container {
   gap: 24px;
   display: flex;
@@ -92,6 +96,11 @@ body {
   margin-left: 0px;
   margin-right: auto;
   position: relative;
+  margin-bottom: 12px;
+}
+
+.gsc-wrapper {
+  background-color: white;
 }
 
 .table-container {

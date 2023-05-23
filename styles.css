@@ -1,0 +1,92 @@
+/* Custom CSS for search results */
+@import url("https://fonts.cdnfonts.com/css/barlow");
+
+body {
+  background-color: #f7f7f7;
+  font-family: "Barlow", sans-serif;
+  max-width: 600px;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.gsc-tabsArea {
+  display: none !important;
+}
+
+.logo-title {
+  background-color: #f7f7f7;
+  align-items: center;
+  font-weight: bold;
+  padding-left: 10%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  display: flex;
+  gap: 12px;
+  font-size: 24px;
+}
+
+.thumbnail-image {
+  border-radius: 10px;
+  margin-right: 0.5rem;
+  cursor: pointer;
+  max-width: 250px;
+  height: auto;
+}
+
+.title-container {
+  font-size: 18px;
+  font-weight: bold;
+  flex: 1;
+}
+
+.result-container {
+  display: flex;
+  padding: 0.5rem;
+  border: 3px solid white !important;
+}
+
+.table-container {
+  display: flex;
+  flex-direction: row;
+  /* outline: 1px solid black; */
+}
+
+.result-container:hover {
+  border: 3px solid darkcyan !important;
+
+}
+
+.count-container {
+  color: black;
+  display: flex;
+  /* margin-top: 25%; */
+  /* margin-left: auto; */
+  /* margin-right: auto; */
+  /* margin-top: auto; */
+  justify-content: space-between;
+  /* align-items: right; */
+  /* outline: 1px solid black; */
+  width: auto;
+}
+
+.info-container {
+  display: inline-block;
+  /* flex-wrap: wrap; */
+  /* flex:auto; */
+}
+input.gsc-input {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.table-footer {
+  display: inline-block;
+  flex: none;
+}
+
+.gsc-webResult .gsc-result:hover {
+  border: 1px solid white !important;
+}
+
+

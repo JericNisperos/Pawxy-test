@@ -1,4 +1,3 @@
-/* Custom CSS for search results */
 @import url("https://fonts.cdnfonts.com/css/barlow");
 
 body {
@@ -10,6 +9,9 @@ body {
   margin-right: auto;
 }
 
+.gsc-resultsbox-visible {
+  margin-top: 16px;
+}
 #video-container {
   max-width: 600px;
   position: fixed;
@@ -19,17 +21,9 @@ body {
   border: none !important;
   margin: 0px;
 
-  display: flex; /* Add this line to make the container flex */
-  flex-direction: column; /* Display its children vertically */
-  justify-content: center; /* Align items vertically in the center */
-  /* 
-  
-  width: 100%;
-  height: 100%;
-  
-  
+  display: flex;
+  flex-direction: column;
   justify-content: center;
-   */
   z-index: 9999;
 }
 .gsc-tabsArea {
@@ -47,17 +41,15 @@ body {
   gap: 12px;
   font-size: 24px;
 }
-
 .thumbnail-image {
   border-radius: 10px;
-  /* margin-right: 0.5rem; */
   cursor: pointer;
   max-width: 250px;
   height: auto;
-  /* margin-top: auto; */
   display: block;
   margin-left: auto;
   margin-right: auto;
+  border: none !important;
 }
 
 .title-container {
@@ -67,15 +59,15 @@ body {
 }
 
 .button-container {
-  display: flex; /* Display buttons horizontally */
-  justify-content: space-between; /* Center align buttons horizontally */ /* Add some spacing between buttons */
+  display: flex;
+  justify-content: space-between;
   width: 90%;
   margin-top: 30vh;
   margin-bottom: 2vh;
 }
 
 .button-container button {
-  background-color: #2A8CFF;
+  background-color: #2a8cff;
   color: white;
   font-weight: 100;
   border-radius: 25px;
@@ -93,6 +85,9 @@ body {
   display: flex;
   padding: 0.5rem;
   border: 3px solid white !important;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .table-container {
@@ -102,7 +97,18 @@ body {
 
 .result-container:hover {
   border: 3px solid darkcyan !important;
+}
 
+.gsc-control-cse {
+  background-color: #f7f7f7 !important;
+  border: none !important;
+}
+.gsc-cursor-box {
+  background-color: white;
+}
+
+.gsc-cursor {
+  padding: 12px 4px;
 }
 
 .count-container {
@@ -112,6 +118,7 @@ body {
   width: auto;
   margin-top: 45px;
   margin-bottom: 0px;
+  font-weight: bold;
 }
 
 .info-container {
@@ -120,15 +127,18 @@ body {
 input.gsc-input {
   font-size: 18px;
   font-weight: bold;
+  align-items: center;
+}
+
+.gsc-search-box {
+  margin-bottom: 24px;
+}
+
+.gcsc-more-maybe-branding-box {
+  font-weight: bold !important;
 }
 
 .table-footer {
   display: inline-block;
   flex: none;
 }
-
-.gsc-webResult .gsc-result:hover {
-  border: 1px solid white !important;
-}
-
-

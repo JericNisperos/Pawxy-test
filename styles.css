@@ -49,8 +49,6 @@ body {
   max-height: 250px;
   height: auto;
   display: block;
-  /* margin-left: auto; */
-  /* margin-right: auto; */
   border: none !important;
 }
 
@@ -58,7 +56,6 @@ body {
   font-size: 18px;
   font-weight: bold;
   min-width: 100%;
-  /* flex: 1; */
 }
 
 .button-container {
@@ -92,7 +89,6 @@ body {
   display: flex;
   padding: 0.5rem;
   border: 3px solid white !important;
-  /* align-items: center; */
   margin-left: 0px;
   margin-right: auto;
   position: relative;

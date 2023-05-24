@@ -4,11 +4,6 @@ const myResultsReadyCallback = function (name, q, promos, results, resultsDiv) {
     return (b.richSnippet?.videoobject?.interactioncount || 0) - (a.richSnippet?.videoobject?.interactioncount || 0);
   });
 
-  // const prevButton = document.getElementsByClassName('gsc-cursor-container-previous');
-  // console.log(prevButton[0])
-
-  // Loop through each matched element
-
   // eto na yung taga kuha ng info. hehe
   const makeResultParts = (result) => {
     // console.log(result);

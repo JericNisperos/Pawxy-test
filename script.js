@@ -1,13 +1,21 @@
 const myResultsReadyCallback = function (name, q, promos, results, resultsDiv) {
   // sorter ito. Need daw to
+  // console.log(q); 
   results.sort((a, b) => {
     return (b.richSnippet?.videoobject?.interactioncount || 0) - (a.richSnippet?.videoobject?.interactioncount || 0);
   });
 
+  
+  const xRemover = document.getElementById('gs_st50');
+  xRemover?.parentNode?.removeChild(xRemover);
+
+
+
+
   // eto na yung taga kuha ng info. hehe
   const makeResultParts = (result) => {
     // console.log(result);
-
+    // console.log(result);
     //taga kuha nung pictyur
     const img = document.createElement("img");
     img.src = result.richSnippet?.videoobject?.thumbnailurl || "https://i.imgur.com/3Fc5RF7.png";
@@ -23,6 +31,8 @@ const myResultsReadyCallback = function (name, q, promos, results, resultsDiv) {
       videoFrame.setAttribute("src", result.richSnippet?.videoobject?.embedurl || "");
       videoFrame.setAttribute("width", "600");
       videoFrame.setAttribute("height", "360");
+      videoFrame.classList.add("videoFrame");
+
 
       const visitButton = document.createElement("button");
       visitButton.innerText = "Visit";
@@ -42,8 +52,25 @@ const myResultsReadyCallback = function (name, q, promos, results, resultsDiv) {
       buttonContainer.appendChild(closeButton);
       buttonContainer.classList.add("button-container");
 
+      const videoInfo = document.createElement("div");
+      videoInfo.innerHTML = result["title"];
+      videoInfo.classList.add('video-info');
+      
       videoContainer.appendChild(videoFrame);
+      videoContainer.appendChild(videoInfo);
+
+      const interactionCountContainer2 = document.createElement("div");
+      interactionCountContainer2.appendChild(ytUrl2);
+      const ytDivider = document.createElement("span");
+      ytDivider.innerHTML = "●";
+      interactionCountContainer2.appendChild(ytDivider);
+      interactionCountContainer2.appendChild(interactioncount2);
+      interactionCountContainer2.classList.add("count-container-video");
+      videoContainer.appendChild(interactionCountContainer2); 
+
       videoContainer.appendChild(buttonContainer);
+
+      
     };
 
     img.addEventListener("click", openVideoPage);
@@ -62,13 +89,22 @@ const myResultsReadyCallback = function (name, q, promos, results, resultsDiv) {
     ytPerson.innerHTML = result.richSnippet?.person?.name || "";
 
     const ytUrl = document.createElement("span");
-    ytUrl.innerHTML = result.visibleUrl;
+    ytUrl.innerHTML = result.visibleUrl === 'www.youtube.com' ? '<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1024px-YouTube_full-color_icon_%282017%29.svg.png" style="width: 12px"/>   Youtube.com' : result.visibleUrl;
+
+    const ytUrl2 = document.createElement("span");
+    ytUrl2.innerHTML = result.visibleUrl === 'www.youtube.com' ? '<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1024px-YouTube_full-color_icon_%282017%29.svg.png" style="width: 12px"/>   Youtube.com ' : result.visibleUrl;
+
+
 
     const intCountValue = result.richSnippet?.videoobject?.interactioncount || 0;
 
     const interactioncount = document.createElement("section");
     interactioncount.innerHTML = formatInteractionCount(intCountValue) + " views";
-    return [img, titleText, ytUrl, ytPerson, interactioncount];
+
+    const interactioncount2 = document.createElement("section");
+    interactioncount2.innerHTML = formatInteractionCount(intCountValue) + " views";
+
+    return [img, titleText, ytUrl, ytUrl2, ytPerson, interactioncount, interactioncount2];
   };
 
   if (results) {
@@ -88,7 +124,9 @@ const myResultsReadyCallback = function (name, q, promos, results, resultsDiv) {
   
       // }
 
-      const [img, titleText, ytUrl, ytPerson, interactioncount] = makeResultParts(result);
+      
+      const [img, titleText, ytUrl, ytUrl2, ytPerson, interactioncount, interactioncount2] = makeResultParts(result);
+      
       resultContainer.appendChild(img);
       const tableInfo = document.createElement("div");
       tableInfo.classList.add("table-container");

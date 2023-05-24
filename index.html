@@ -7,7 +7,14 @@
     <script async src="https://cse.google.com/cse.js?cx=056ca99362a57413f"></script>
     <link rel="stylesheet" href="styles.css" />
     <script src="script.js"></script>
-  </head>
+
+    <!-- 
+      <PageMap>
+      <DataObject type="content">
+        <Attribute name="visibleUrl">www.youtube.com</Attribute>
+      </DataObject>
+    </PageMap> 
+  --></head>
   <body>
     <div id="video-container"></div>
     <div class="container">
@@ -16,7 +23,16 @@
         <p>Simple Video Search Engine</p>
       </div>
 
-      <div class="gcse-search" data-mobileLayout="forced" data-webSearchQueryAddition="video" data-webSearchResultSetSize="10"></div>
+      <div id="searchbox" class="gcse-search" data-mobileLayout="forced" data-webSearchResultSetSize="10"></div>
     </div>
   </body>
+  <script defer>
+    const prevButton = document.querySelector('.gsc-cursor');
+    console.log(prevButton);
+const prevText = document.createElement('span');
+prevText.innerText = 'Prev';
+
+// prevButton.appendChild(prevText);
+
+  </script>
 </html>
